@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Futura";
+  src: url("assets/fonts/FuturaFuturisC.ttf") format("truetype");
+  font-weight: 400;
+}
+
+html,
+input,
+textarea {
+  font-family: "Futura";
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0e2a3f #dfe9eb;
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
+  width: 2px;
+}
+*::-webkit-scrollbar:horizontal {
+  width: 2px;
+  height: 2px;
+}
+*::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background-color: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: radial-gradient(
+    1166.16% 151.98% at -5.84% 106.58%,
+    #ac400f 0%,
+    #dd7921 100%
+  );
+}
+
+:root {
+  --color-error: #e64242;
+  --color-primary: #ff8a25;
+}
+
+svg path {
+  stroke: currentColor;
+}
+
+.sb-main-padded.sb-show-main {
+  background: #050505;
+}

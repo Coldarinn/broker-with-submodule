@@ -1,0 +1,201 @@
+{
+  "total": 23,
+  "rows": [
+    {
+      "id": 24,
+      "location": "Москва",
+      "address": "asdsadasda",
+      "area": "23213.00",
+      "price": "213123.00",
+      "cadastreNumber": "21:31:231232:13",
+      "description": "sadasdas",
+      "ownerId": 3,
+      "responsibleId": 1,
+      "ownerName": "sadasd",
+      "status": "review",
+      "createdAt": "2024-01-23T04:44:58.478Z",
+      "updatedAt": "2024-01-23T04:44:58.486Z",
+      "owner": {
+        "id": 3,
+        "email": "kpalkin60@gmail.com",
+        "name": "Палкин Кирилл Дмитриевич",
+        "phone": "79922297423",
+        "role": "app_user",
+        "company": "coldarinn company",
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-22T11:02:09.322Z",
+        "updatedAt": "2024-01-22T11:02:09.322Z"
+      },
+      "responsible": {
+        "id": 1,
+        "email": "test_admin2@admin.ru",
+        "name": "assignee",
+        "phone": "71234567890",
+        "role": "app_admin",
+        "company": null,
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-16T20:47:25.304Z",
+        "updatedAt": "2024-01-16T20:47:25.304Z"
+      },
+      "files": [
+        {
+          "id": 28,
+          "filename": "image_2023-12-20_16-06-15 (2).png",
+          "LandPlot_File": {
+            "landPlotId": 24,
+            "fileId": 28,
+            "createdAt": "2024-01-23T04:44:58.505Z",
+            "updatedAt": "2024-01-23T04:44:58.505Z"
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "location": "Москва",
+      "address": "asdsadasda",
+      "area": "23213.00",
+      "price": "213123.00",
+      "cadastreNumber": "21:31:231232:13",
+      "description": "sadasdas",
+      "ownerId": 3,
+      "responsibleId": 1,
+      "ownerName": "sadasd",
+      "status": "review",
+      "createdAt": "2024-01-23T04:44:58.322Z",
+      "updatedAt": "2024-01-23T04:44:58.330Z",
+      "owner": {
+        "id": 3,
+        "email": "kpalkin60@gmail.com",
+        "name": "Палкин Кирилл Дмитриевич",
+        "phone": "79922297423",
+        "role": "app_user",
+        "company": "coldarinn company",
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-22T11:02:09.322Z",
+        "updatedAt": "2024-01-22T11:02:09.322Z"
+      },
+      "responsible": {
+        "id": 1,
+        "email": "test_admin2@admin.ru",
+        "name": "assignee",
+        "phone": "71234567890",
+        "role": "app_admin",
+        "company": null,
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-16T20:47:25.304Z",
+        "updatedAt": "2024-01-16T20:47:25.304Z"
+      },
+      "files": [
+        {
+          "id": 27,
+          "filename": "image_2023-12-20_16-06-15 (2).png",
+          "LandPlot_File": {
+            "landPlotId": 23,
+            "fileId": 27,
+            "createdAt": "2024-01-23T04:44:58.350Z",
+            "updatedAt": "2024-01-23T04:44:58.350Z"
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "location": "Москва",
+      "address": "asdsadasda",
+      "area": "23213.00",
+      "price": "213123.00",
+      "cadastreNumber": "21:31:231232:13",
+      "description": "sadasdas",
+      "ownerId": 3,
+      "responsibleId": 1,
+      "ownerName": "sadasd",
+      "status": "review",
+      "createdAt": "2024-01-23T04:44:58.136Z",
+      "updatedAt": "2024-01-23T04:44:58.145Z",
+      "owner": {
+        "id": 3,
+        "email": "kpalkin60@gmail.com",
+        "name": "Палкин Кирилл Дмитриевич",
+        "phone": "79922297423",
+        "role": "app_user",
+        "company": "coldarinn company",
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-22T11:02:09.322Z",
+        "updatedAt": "2024-01-22T11:02:09.322Z"
+      },
+      "responsible": {
+        "id": 1,
+        "email": "test_admin2@admin.ru",
+        "name": "assignee",
+        "phone": "71234567890",
+        "role": "app_admin",
+        "company": null,
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-16T20:47:25.304Z",
+        "updatedAt": "2024-01-16T20:47:25.304Z"
+      },
+      "files": [
+        {
+          "id": 26,
+          "filename": "image_2023-12-20_16-06-15 (2).png",
+          "LandPlot_File": {
+            "landPlotId": 22,
+            "fileId": 26,
+            "createdAt": "2024-01-23T04:44:58.167Z",
+            "updatedAt": "2024-01-23T04:44:58.167Z"
+          }
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "location": "Москва",
+      "address": "asdsadasda",
+      "area": "23213.00",
+      "price": "213123.00",
+      "cadastreNumber": "21:31:231232:13",
+      "description": "sadasdas",
+      "ownerId": 3,
+      "responsibleId": 1,
+      "ownerName": "sadasd",
+      "status": "review",
+      "createdAt": "2024-01-23T04:44:57.973Z",
+      "updatedAt": "2024-01-23T04:44:57.981Z",
+      "owner": {
+        "id": 3,
+        "email": "kpalkin60@gmail.com",
+        "name": "Палкин Кирилл Дмитриевич",
+        "phone": "79922297423",
+        "role": "app_user",
+        "company": "coldarinn company",
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-22T11:02:09.322Z",
+        "updatedAt": "2024-01-22T11:02:09.322Z"
+      },
+      "responsible": {
+        "id": 1,
+        "email": "test_admin2@admin.ru",
+        "name": "assignee",
+        "phone": "71234567890",
+        "role": "app_admin",
+        "company": null,
+        "accountType": "account_type_personal",
+        "createdAt": "2024-01-16T20:47:25.304Z",
+        "updatedAt": "2024-01-16T20:47:25.304Z"
+      },
+      "files": [
+        {
+          "id": 25,
+          "filename": "image_2023-12-20_16-06-15 (2).png",
+          "LandPlot_File": {
+            "landPlotId": 21,
+            "fileId": 25,
+            "createdAt": "2024-01-23T04:44:58.001Z",
+            "updatedAt": "2024-01-23T04:44:58.001Z"
+          }
+        }
+      ]
+    }
+  ]
+}
