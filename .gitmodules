@@ -1,0 +1,3 @@
+[submodule "uikit"]
+	path = uikit
+	url = git@github.com:Coldarinn/uikit.git
