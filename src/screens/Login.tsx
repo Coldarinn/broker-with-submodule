@@ -1,48 +1,48 @@
-import React from "react"
-import { Form as FinalForm, Field } from "react-final-form"
-import { FieldInput } from "@/uikit/Input"
-import { Error as ErrorComponent } from "@/uikit/Error"
-import styled from "@emotion/styled"
-import { email, required } from "@/modules/validator"
-import { FORM_ERROR } from "final-form"
-import { useNavigate } from "react-router-dom"
-import { Link } from "@/uikit/Link.ts"
-import { Button as BaseButton } from "@/uikit/Button"
-import { Layout } from "@/shared-components/Layout"
-import { customFetch } from "@/modules/fetch"
-import { parseJWT, useUser } from "@/modules/user"
+import React from "react";
+import { Form as FinalForm, Field } from "react-final-form";
+import { FieldInput } from "~/Input";
+import { Error as ErrorComponent } from "~/Error";
+import styled from "@emotion/styled";
+import { email, required } from "@/modules/validator";
+import { FORM_ERROR } from "final-form";
+import { useNavigate } from "react-router-dom";
+import { Link } from "~/Link.ts";
+import { Button as BaseButton } from "~/Button";
+import { Layout } from "@/shared-components/Layout";
+import { customFetch } from "@/modules/fetch";
+import { parseJWT, useUser } from "@/modules/user";
 
 type LoginModel = {
-  email: string
-  password: string
-}
+  email: string;
+  password: string;
+};
 
 export const Login: React.FC = () => {
-  const { setUser } = useUser()
+  const { setUser } = useUser();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <FinalForm<LoginModel>
       onSubmit={async (body) => {
         try {
-          const data = await fetchLogin(body)
-          const decodedToken = parseJWT(data.accessToken)
+          const data = await fetchLogin(body);
+          const decodedToken = parseJWT(data.accessToken);
 
           const userDataResponse = await customFetch("/user", {
             headers: {
               Authorization: `Bearer ${data.accessToken}`,
             },
-          }).then((res) => res.json())
+          }).then((res) => res.json());
 
-          const userData = { ...data, ...decodedToken, ...userDataResponse }
+          const userData = { ...data, ...decodedToken, ...userDataResponse };
 
-          localStorage.setItem("userData", JSON.stringify(userData))
+          localStorage.setItem("userData", JSON.stringify(userData));
 
-          setUser(userData)
+          setUser(userData);
 
-          navigate("/")
+          navigate("/");
         } catch {
-          return { [FORM_ERROR]: "Неверная почта или пароль" }
+          return { [FORM_ERROR]: "Неверная почта или пароль" };
         }
       }}
     >
@@ -77,21 +77,21 @@ export const Login: React.FC = () => {
         </Layout>
       )}
     </FinalForm>
-  )
-}
+  );
+};
 
 const fetchLogin = async (body: LoginModel) => {
   const data = await customFetch("/auth/login", {
     method: "POST",
     body: body as any,
-  }).then((res) => res.json())
+  }).then((res) => res.json());
 
   if (!data.accessToken) {
-    throw new Error()
+    throw new Error();
   }
 
-  return data
-}
+  return data;
+};
 
 const Form = styled.form`
   margin: auto;
@@ -99,7 +99,7 @@ const Form = styled.form`
 
   display: grid;
   gap: 12px;
-`
+`;
 
 const Title = styled.div`
   margin: 0 auto 24px;
@@ -107,17 +107,17 @@ const Title = styled.div`
 
   color: #fff;
   font-size: 32px;
-`
+`;
 
 const Button = styled(BaseButton)`
   width: 100%;
-`
+`;
 
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`
+`;
 
 // const Text = styled.div`
 //   color: #fff;

@@ -1,37 +1,37 @@
-import React from "react"
-import { Tooltip } from "@/uikit/Tooltip"
-import styled from "@emotion/styled"
-import { css } from "@emotion/react"
+import React from "react";
+import { Tooltip } from "~/Tooltip";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 export type ColumnType<T> = {
-  key: string
-  title: string
-  width?: number
-  render?: (column: ColumnType<T>, item: T) => void
-}
+  key: string;
+  title: string;
+  width?: number;
+  render?: (column: ColumnType<T>, item: T) => void;
+};
 
 type Props<T> = {
-  item: T
-  column: ColumnType<T>
-  colGap: number
-}
+  item: T;
+  column: ColumnType<T>;
+  colGap: number;
+};
 
 export const Cell = <T extends object>({ item, column, colGap }: Props<T>) => {
-  const value = get(item, column.key)
+  const value = get(item, column.key);
 
-  const [isHidden, setIsHidden] = React.useState(false)
+  const [isHidden, setIsHidden] = React.useState(false);
 
   const checkHeight = (domNode: HTMLDivElement) => {
     if (!column.render && domNode && !isHidden) {
-      setIsHidden(domNode.scrollHeight > domNode.clientHeight)
+      setIsHidden(domNode.scrollHeight > domNode.clientHeight);
     }
-  }
+  };
 
   return (
     <Content width={column.width} colGap={colGap}>
       {column.render?.(column, item) ?? (
         <WebkitBox ref={checkHeight}>
-          {isHidden ?
+          {isHidden ? (
             <Tooltip
               content={value}
               placement="bottom-start"
@@ -40,12 +40,14 @@ export const Cell = <T extends object>({ item, column, colGap }: Props<T>) => {
             >
               {() => <Text>{value}</Text>}
             </Tooltip>
-          : value}
+          ) : (
+            value
+          )}
         </WebkitBox>
       )}
     </Content>
-  )
-}
+  );
+};
 
 // analog lodash.get
 function get(obj: any, ...props: string[]): any {
@@ -53,9 +55,9 @@ function get(obj: any, ...props: string[]): any {
     obj &&
     props.reduce(
       (result, prop) => (result == null ? undefined : result[prop]),
-      obj,
+      obj
     )
-  )
+  );
 }
 
 const Content = styled.td<
@@ -63,17 +65,17 @@ const Content = styled.td<
 >`
   padding: 24px ${({ colGap }) => colGap}px;
   ${({ width }) =>
-    width ?
-      typeof width === "number" ?
-        css`
-          max-width: ${width}px;
-          min-width: ${width}px;
-        `
-      : css`
-          max-width: ${width};
-          min-width: ${width};
-        `
-    : ""}
+    width
+      ? typeof width === "number"
+        ? css`
+            max-width: ${width}px;
+            min-width: ${width}px;
+          `
+        : css`
+            max-width: ${width};
+            min-width: ${width};
+          `
+      : ""}
 
   text-align: center;
   color: #fff;
@@ -85,7 +87,7 @@ const Content = styled.td<
   &:last-child {
     padding-right: 0;
   }
-`
+`;
 const WebkitBox = styled.div`
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -107,11 +109,11 @@ const WebkitBox = styled.div`
       text-align: left;
     }
   }
-`
+`;
 const Text = styled.div`
   transition: 0.2s;
 
   &:hover {
     color: #ff8a25;
   }
-`
+`;

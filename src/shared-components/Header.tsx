@@ -1,35 +1,35 @@
-import LogoIcon from "@/assets/images/logo.svg"
-import UserIcon from "@/assets/images/icons/user.svg"
-import ArrowIcon from "@/assets/images/icons/chevron.svg"
-import { ButtonNormalized } from "@/uikit/Button"
-import styled from "@emotion/styled"
-import { Tooltip } from "../uikit/Tooltip"
-import React from "react"
-import LogoutIcon from "@/assets/images/icons/logout.svg"
-import SettingsIcon from "@/assets/images/icons/user-settings.svg"
-import { css } from "@emotion/react"
-import { Modal } from "./Modal"
-import { UserSettings } from "./UserSettings"
-import { accountType, initialData, useUser } from "@/modules/user"
-import { customFetch } from "@/modules/fetch"
-import { formatPhoneNumber } from "@/modules/utils/formatPhoneNumber"
+import LogoIcon from "@/assets/images/logo.svg";
+import UserIcon from "@/assets/images/icons/user.svg";
+import ArrowIcon from "@/assets/images/icons/chevron.svg";
+import { ButtonNormalized } from "~/Button";
+import styled from "@emotion/styled";
+import { Tooltip } from "~/Tooltip";
+import React from "react";
+import LogoutIcon from "@/assets/images/icons/logout.svg";
+import SettingsIcon from "@/assets/images/icons/user-settings.svg";
+import { css } from "@emotion/react";
+import { Modal } from "./Modal";
+import { UserSettings } from "./UserSettings";
+import { accountType, initialData, useUser } from "@/modules/user";
+import { customFetch } from "@/modules/fetch";
+import { formatPhoneNumber } from "@/modules/utils/formatPhoneNumber";
 
 export const Header = () => {
-  const [isOpenModal, setIsOpenModal] = React.useState(false)
+  const [isOpenModal, setIsOpenModal] = React.useState(false);
 
-  const { state, setUser } = useUser()
+  const { state, setUser } = useUser();
 
-  const accountType = getAccountType(state.accountType)
+  const accountType = getAccountType(state.accountType);
 
   const logout = () => {
     customFetch(`/auth/logout`, {
       method: "POST",
       body: { refreshToken: state.refreshToken } as any,
-    })
+    });
 
-    localStorage.removeItem("userData")
-    setUser(initialData)
-  }
+    localStorage.removeItem("userData");
+    setUser(initialData);
+  };
 
   return (
     <HeaderWrapper>
@@ -114,19 +114,19 @@ export const Header = () => {
         </>
       )}
     </HeaderWrapper>
-  )
-}
+  );
+};
 
 const getAccountType = (accountType: accountType) => {
   switch (accountType) {
     case "account_type_broker":
-      return "Частный брокер"
+      return "Частный брокер";
     case "account_type_company":
-      return "Компания"
+      return "Компания";
     default:
-      return "Собственник"
+      return "Собственник";
   }
-}
+};
 
 const HeaderWrapper = styled.header`
   padding: 16px 30px;
@@ -143,7 +143,7 @@ const HeaderWrapper = styled.header`
 
   background-color: #141414;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
-`
+`;
 
 const Info = styled.div`
   display: flex;
@@ -176,7 +176,7 @@ const Info = styled.div`
     white-space: nowrap;
     line-height: 0;
   }
-`
+`;
 const Icon = styled.div`
   width: 44px;
   height: 44px;
@@ -189,7 +189,7 @@ const Icon = styled.div`
   border-radius: 50%;
   background-color: #414141;
   color: #fff;
-`
+`;
 const MenuIcon = styled(ButtonNormalized)`
   color: #fff;
   line-height: 0;
@@ -199,7 +199,7 @@ const MenuIcon = styled(ButtonNormalized)`
   &:hover {
     color: #ff8a25;
   }
-`
+`;
 const Name = styled.div`
   color: #fff;
   font-size: 18px;
@@ -212,7 +212,7 @@ const Name = styled.div`
       color: #ff8a25;
     }
   }
-`
+`;
 const Button = styled(ButtonNormalized)<{ isOpen: boolean }>`
   padding: 12px;
   background-color: #1f1f1f;
@@ -226,21 +226,21 @@ const Button = styled(ButtonNormalized)<{ isOpen: boolean }>`
   transition: 0.2s;
 
   ${({ isOpen }) =>
-    isOpen ?
-      css`
-        border-radius: 12px 12px 0 0;
-        svg {
-          transform: scaleY(-1);
-        }
-      `
-    : css`
-        border-radius: 12px;
-      `}
+    isOpen
+      ? css`
+          border-radius: 12px 12px 0 0;
+          svg {
+            transform: scaleY(-1);
+          }
+        `
+      : css`
+          border-radius: 12px;
+        `}
 
   &:hover {
     color: #ff8a25;
   }
-`
+`;
 const Row = styled.div`
   display: flex;
   align-items: center;
@@ -254,30 +254,30 @@ const Row = styled.div`
 
     border-top: 1px solid #414141;
   }
-`
+`;
 const Col = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
-`
+`;
 const Role = styled.div`
   color: #959596;
   font-size: 12px;
   line-height: 135%;
   letter-spacing: 0.72px;
   text-transform: uppercase;
-`
+`;
 const Mail = styled(ButtonNormalized)`
   color: #ff8a25;
   font-size: 14px;
   line-height: 150%;
   text-decoration-line: underline;
-`
+`;
 const Phone = styled(ButtonNormalized)`
   color: #fff;
   font-size: 14px;
   line-height: 150%;
-`
+`;
 const MenuDash = styled.div`
   width: 20px;
   height: 1px;
@@ -288,4 +288,4 @@ const MenuDash = styled.div`
   transform: translateX(-50%);
 
   background: #414141;
-`
+`;

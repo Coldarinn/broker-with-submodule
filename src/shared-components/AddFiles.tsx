@@ -1,38 +1,38 @@
-import { Form as FinalForm, Field } from "react-final-form"
-import { FORM_ERROR } from "final-form"
-import { Button } from "@/uikit/Button"
-import { Error as ErrorComponent } from "@/uikit/Error"
-import { FieldInputFiles } from "@/uikit/InputFile"
-import { required } from "@/modules/validator"
-import styled from "@emotion/styled"
-import { customFetch } from "@/modules/fetch"
+import { Form as FinalForm, Field } from "react-final-form";
+import { FORM_ERROR } from "final-form";
+import { Button } from "~/Button";
+import { Error as ErrorComponent } from "~/Error";
+import { FieldInputFiles } from "~/InputFile";
+import { required } from "@/modules/validator";
+import styled from "@emotion/styled";
+import { customFetch } from "@/modules/fetch";
 
 type Props = {
-  id: string
-  onClose: () => void
-  increaseFiles: (count: number) => void
-}
+  id: string;
+  onClose: () => void;
+  increaseFiles: (count: number) => void;
+};
 
 type AddFilesModel = {
-  file: File[]
-}
+  file: File[];
+};
 
 export const AddFiles = ({ id, onClose, increaseFiles }: Props) => {
   return (
     <FinalForm<AddFilesModel>
       onSubmit={async (body) => {
         try {
-          const formData = new FormData()
+          const formData = new FormData();
 
           body.file.forEach((file) => {
-            formData.append("file", file)
-          })
+            formData.append("file", file);
+          });
 
-          await fetchAddFiles(id, formData)
-          increaseFiles(body.file.length)
-          onClose()
+          await fetchAddFiles(id, formData);
+          increaseFiles(body.file.length);
+          onClose();
         } catch {
-          return { [FORM_ERROR]: "Не удалось добавить файлы" }
+          return { [FORM_ERROR]: "Не удалось добавить файлы" };
         }
       }}
     >
@@ -63,21 +63,21 @@ export const AddFiles = ({ id, onClose, increaseFiles }: Props) => {
         </Form>
       )}
     </FinalForm>
-  )
-}
+  );
+};
 
 const fetchAddFiles = async (id: string, body: FormData) => {
   const data = await customFetch(`/landplot/file/${id}`, {
     method: "POST",
     body,
-  })
+  });
 
   if (data.status !== 201) {
-    throw new Error()
+    throw new Error();
   }
 
-  return {}
-}
+  return {};
+};
 
 const Form = styled.form`
   width: 800px;
@@ -89,7 +89,7 @@ const Form = styled.form`
 
   border-radius: 24px;
   background: #141414;
-`
+`;
 const Title = styled.div`
   margin-bottom: 24px;
   padding-bottom: 24px;
@@ -99,9 +99,9 @@ const Title = styled.div`
   color: #fff;
   font-size: 24px;
   text-align: center;
-`
+`;
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-`
+`;

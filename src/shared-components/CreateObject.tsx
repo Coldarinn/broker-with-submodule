@@ -1,58 +1,58 @@
-import { Form as FinalForm, Field } from "react-final-form"
-import { FORM_ERROR } from "final-form"
-import { FieldInput } from "@/uikit/Input"
-import { FieldSelect, option } from "@/uikit/Select"
-import { Button } from "@/uikit/Button"
-import { Error as ErrorComponent } from "@/uikit/Error"
-import { FieldInputFiles } from "@/uikit/InputFile"
-import { FieldTextArea } from "@/uikit/TextArea"
-import { composeValidators, maxCountChar, required } from "@/modules/validator"
-import styled from "@emotion/styled"
-import { customFetch } from "@/modules/fetch"
+import { Form as FinalForm, Field } from "react-final-form";
+import { FORM_ERROR } from "final-form";
+import { FieldInput } from "~/Input";
+import { FieldSelect, option } from "~/Select";
+import { Button } from "~/Button";
+import { Error as ErrorComponent } from "~/Error";
+import { FieldInputFiles } from "~/InputFile";
+import { FieldTextArea } from "~/TextArea";
+import { composeValidators, maxCountChar, required } from "@/modules/validator";
+import styled from "@emotion/styled";
+import { customFetch } from "@/modules/fetch";
 
 type Props = {
-  onClose: () => void
-  getLandplots: () => void
-}
+  onClose: () => void;
+  getLandplots: () => void;
+};
 
 type ObjectModel = {
-  ownerName: string
-  location: option
-  address: string
-  area: number
-  price: number
-  cadastreNumber: string
-  description: string
-  files: File[]
-}
+  ownerName: string;
+  location: option;
+  address: string;
+  area: number;
+  price: number;
+  cadastreNumber: string;
+  description: string;
+  files: File[];
+};
 
 export const CreateObject = ({ onClose, getLandplots }: Props) => {
   return (
     <FinalForm<ObjectModel>
       onSubmit={async (body) => {
         try {
-          const data = { ...body, location: body.location.name }
+          const data = { ...body, location: body.location.name };
 
-          const formData = new FormData()
+          const formData = new FormData();
           for (const key in data) {
             if (
               Object.prototype.hasOwnProperty.call(data, key) &&
               key !== "files"
             ) {
               // @ts-ignore
-              formData.append(key, data[key])
+              formData.append(key, data[key]);
             }
           }
 
           data.files.forEach((file) => {
-            formData.append("files", file)
-          })
+            formData.append("files", file);
+          });
 
-          await fetchCreateObject(formData)
-          getLandplots()
-          onClose()
+          await fetchCreateObject(formData);
+          getLandplots();
+          onClose();
         } catch {
-          return { [FORM_ERROR]: "Не удалось создать объект" }
+          return { [FORM_ERROR]: "Не удалось создать объект" };
         }
       }}
     >
@@ -149,24 +149,24 @@ export const CreateObject = ({ onClose, getLandplots }: Props) => {
         </Form>
       )}
     </FinalForm>
-  )
-}
+  );
+};
 
 const fetchCreateObject = async (body: FormData) => {
   const data = await customFetch(`/landplot`, {
     method: "POST",
     body,
-  })
+  });
 
   if (data.status !== 201) {
-    throw new Error()
+    throw new Error();
   }
 
-  return {}
-}
+  return {};
+};
 
 const validateNumberMask = (value: string) =>
-  String(value).includes("X") ? "Некорректный кадастровый номер" : undefined
+  String(value).includes("X") ? "Некорректный кадастровый номер" : undefined;
 
 const locations = [
   {
@@ -193,7 +193,7 @@ const locations = [
     value: "Регионы",
     name: "Регионы",
   },
-]
+];
 
 const Form = styled.form`
   width: 800px;
@@ -205,12 +205,12 @@ const Form = styled.form`
 
   border-radius: 24px;
   background: #141414;
-`
+`;
 const Title = styled.div`
   color: #fff;
   font-size: 24px;
   text-align: center;
-`
+`;
 const Content = styled.div`
   padding-bottom: 10px;
 
@@ -219,14 +219,14 @@ const Content = styled.div`
   gap: 10px;
 
   border-bottom: 1px solid #1f1f1f;
-`
+`;
 const Grid = styled.div<{ cols: number }>`
   display: grid;
   grid-template-columns: repeat(${({ cols }) => cols}, 1fr);
   gap: 24px;
-`
+`;
 const Note = styled.div`
   color: #fff;
   line-height: 140%;
   letter-spacing: 0.28px;
-`
+`;

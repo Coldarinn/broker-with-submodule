@@ -1,29 +1,29 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { Button, ButtonNormalized } from "@/uikit/Button"
-import { Tooltip } from "@/uikit/Tooltip"
-import PlusIcon from "@/assets/images/icons/plus.svg"
-import DownloadIcon from "@/assets/images/icons/download.svg"
-import { Modal } from "./Modal"
-import { AddFiles } from "./AddFiles"
-import { customFetch } from "@/modules/fetch.ts"
+import React from "react";
+import styled from "@emotion/styled";
+import { Button, ButtonNormalized } from "~/Button";
+import { Tooltip } from "~/Tooltip";
+import PlusIcon from "@/assets/images/icons/plus.svg";
+import DownloadIcon from "@/assets/images/icons/download.svg";
+import { Modal } from "./Modal";
+import { AddFiles } from "./AddFiles";
+import { customFetch } from "@/modules/fetch.ts";
 
 type Props = {
-  id: string
-  filesLength: number
-}
+  id: string;
+  filesLength: number;
+};
 
 export const TableFiles = ({ id, filesLength }: Props) => {
-  const [filesCount, setFilesCount] = React.useState(filesLength)
-  const [isOpenModal, setIsOpenModal] = React.useState(false)
+  const [filesCount, setFilesCount] = React.useState(filesLength);
+  const [isOpenModal, setIsOpenModal] = React.useState(false);
 
   const closeModal = () => {
-    setIsOpenModal(false)
-  }
+    setIsOpenModal(false);
+  };
 
   const increaseFiles = (count: number) => {
-    setFilesCount(filesCount + count)
-  }
+    setFilesCount(filesCount + count);
+  };
 
   return (
     <>
@@ -54,32 +54,32 @@ export const TableFiles = ({ id, filesLength }: Props) => {
         <AddFiles id={id} onClose={closeModal} increaseFiles={increaseFiles} />
       </Modal>
     </>
-  )
-}
+  );
+};
 
 const onDownload = (id: string) => () => {
   customFetch(`/landplot/${id}/files`).then(async (res) => {
-    const url = URL.createObjectURL(await res.blob())
-    const link = document.createElement("a")
+    const url = URL.createObjectURL(await res.blob());
+    const link = document.createElement("a");
     try {
-      link.href = url
+      link.href = url;
       link.download =
         res.headers
           .get("Content-Disposition")
           ?.split('filename="')[1]
-          ?.split('"')?.[0] ?? "files.zip"
-      document.body.append(link)
-      link.click()
+          ?.split('"')?.[0] ?? "files.zip";
+      document.body.append(link);
+      link.click();
     } finally {
-      link.remove()
+      link.remove();
     }
-  })
-}
+  });
+};
 
 const Files = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 const DownloadButton = styled(ButtonNormalized)`
   width: 48px;
   height: 48px;
@@ -95,7 +95,7 @@ const DownloadButton = styled(ButtonNormalized)`
   &:hover {
     color: #ff8a25;
   }
-`
+`;
 const DownloadCount = styled.span`
   padding: 0 2px;
 
@@ -114,9 +114,9 @@ const DownloadCount = styled.span`
   font-size: 12px;
   line-height: 135%;
   letter-spacing: 0.72px;
-`
+`;
 const AddButton = styled(Button)`
   padding: 14px;
 
   color: #fff;
-`
+`;
